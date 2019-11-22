@@ -1,0 +1,117 @@
+{
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "type": "project",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../fotobank/laravel-admin-grid"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "cisco/laravel-aliyunsms": "dev-master",
+        "codingyu/ueditor": "^3.0",
+        "dianwoung/large-file-upload": "^0.0.3",
+        "encore/laravel-admin": "^1.7",
+        "facade/ignition": "^1.11",
+        "fideloper/proxy": "~3.3",
+        "fourn/admin-config": "^1.1",
+        "james.xue/laravel-admin-grid": "^1.2",
+        "jxlwqq/code-mirror": "^1.0",
+        "jxlwqq/composer-viewer": "^1.0",
+        "jxlwqq/data-table": "^1.0",
+        "jxlwqq/echarts": "^1.0",
+        "jxlwqq/env-manager": "^0.1.0",
+        "jxlwqq/file-manager": "^1.0",
+        "jxlwqq/json-editor": "^1.0",
+        "jxlwqq/material-ui": "^1.0",
+        "jxlwqq/simditor": "^1.0",
+        "jxlwqq/star-rating": "^1.0",
+        "jxlwqq/tencent-map": "^1.1",
+        "laravel-admin-ext/api-tester": "^1.0",
+        "laravel-admin-ext/backup": "^1.0",
+        "laravel-admin-ext/config": "^1.0",
+        "laravel-admin-ext/cropper": "1.0.2.1",
+        "laravel-admin-ext/css-editor": "^1.0",
+        "laravel-admin-ext/data-dictionary": "^1.0",
+        "laravel-admin-ext/daterangepicker": "^1.0",
+        "laravel-admin-ext/file-browser": "^0.0.2",
+        "laravel-admin-ext/grid-lightbox": "^1.0",
+        "laravel-admin-ext/helpers": "^1.1",
+        "laravel-admin-ext/js-editor": "^1.0",
+        "laravel-admin-ext/log-viewer": "^1.0",
+        "laravel-admin-ext/media-manager": "^1.1",
+        "laravel-admin-ext/media-player": "^1.0",
+        "laravel-admin-ext/messages": "@dev",
+        "laravel-admin-ext/php-editor": "^1.0",
+        "laravel-admin-ext/redis-manager": "^1.2",
+        "laravel-admin-ext/reporter": "^1.0",
+        "laravel-admin-ext/scheduling": "^1.0",
+        "laravel-admin-ext/wang-editor": "^1.1",
+        "laravel-admin-extensions/multi-language": "^0.0.3",
+        "laravel/framework": "5.5.*",
+        "laravel/tinker": "~1.0",
+        "manzhouya/auth-attempts": "^1.2",
+        "zhpefe/select-tree": "^1.2"
+    },
+    "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.2",
+        "barryvdh/laravel-ide-helper": "^2.6",
+        "doctrine/dbal": "^2.9",
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "~1.0",
+        "phpunit/phpunit": "~6.0",
+        "symfony/thanks": "^1.0"
+    },
+    "autoload": {
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ],
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Manzhouya\\AuthAttempts\\AuthAttemptsServiceProvider",
+                "KevinSoft\\MultiLanguage\\MultiLanguageServiceProvider"
+            ],
+            "dont-discover": [
+                "Manzhouya/AuthAttempts",
+                "KevinSoft/MultiLanguage"
+            ]
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover"
+        ],
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "php artisan ide-helper:generate",
+            "php artisan ide-helper:meta"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}
