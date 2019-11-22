@@ -4,6 +4,7 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
+    "minimum-stability": "dev",
     "repositories": [
         {
             "type": "path",
@@ -18,8 +19,8 @@
         "encore/laravel-admin": "^1.7",
         "facade/ignition": "^1.11",
         "fideloper/proxy": "~3.3",
+        "fotobank/laravel-admin-grid": "dev-master",
         "fourn/admin-config": "^1.1",
-        "james.xue/laravel-admin-grid": "^1.2",
         "jxlwqq/code-mirror": "^1.0",
         "jxlwqq/composer-viewer": "^1.0",
         "jxlwqq/data-table": "^1.0",

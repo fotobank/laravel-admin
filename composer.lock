@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "47a21589bd5ebf95d2715b721c96a659",
+    "content-hash": "40b95337673e8af5942a80ea7980296a",
     "packages": [
         {
             "name": "cisco/laravel-aliyunsms",
@@ -1058,6 +1058,39 @@
             "time": "2019-08-07T09:00:00+00:00"
         },
         {
+            "name": "fotobank/laravel-admin-grid",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "../fotobank/laravel-admin-grid",
+                "reference": "8d8b0715446dfe0a5b01f88977531ff614a1af89"
+            },
+            "require": {
+                "php": ">=7.0.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Fotobank\\Admin\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alex Jury",
+                    "email": "aleksjurii@gmail.com"
+                }
+            ],
+            "description": "Package for using laravel admin grid in Laravel-5",
+            "homepage": "https://github.com/fotobank/laravel-admin-grid",
+            "keywords": [
+                "extension",
+                "laravel-admin"
+            ]
+        },
+        {
             "name": "fourn/admin-config",
             "version": "1.1.0",
             "source": {
@@ -1335,44 +1368,6 @@
             ],
             "description": "Highlight PHP code in terminal",
             "time": "2018-09-29T18:48:56+00:00"
-        },
-        {
-            "name": "james.xue/laravel-admin-grid",
-            "version": "1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/xiaoxuan6/laravel-admin-grid.git",
-                "reference": "e70b3f968109828e2c3c4f99efe471008d69186d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/xiaoxuan6/laravel-admin-grid/zipball/e70b3f968109828e2c3c4f99efe471008d69186d",
-                "reference": "e70b3f968109828e2c3c4f99efe471008d69186d",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "James\\Admin\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "xiaoxuan6",
-                    "email": "1527736751@qq.com"
-                }
-            ],
-            "description": "laravel-admin Grid",
-            "homepage": "https://github.com/xiaoxuan6/laravel-admin-grid",
-            "keywords": [
-                "extension",
-                "laravel-admin"
-            ],
-            "time": "2019-08-06T06:22:01+00:00"
         },
         {
             "name": "jxlwqq/code-mirror",
@@ -8436,9 +8431,10 @@
         }
     ],
     "aliases": [],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
         "cisco/laravel-aliyunsms": 20,
+        "fotobank/laravel-admin-grid": 20,
         "laravel-admin-ext/messages": 20
     },
     "prefer-stable": false,
