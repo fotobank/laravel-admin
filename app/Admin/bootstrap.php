@@ -28,5 +28,6 @@ Encore\Admin\Form::extend('largefile', \Encore\LargeFileUpload\LargeFileField::c
 app('view')->prependNamespace('multi-language', resource_path('views/admin'));
 app('view')->prependNamespace('auth-attempts', resource_path('views/admin'));
 app('view')->prependNamespace('laravel-admin', resource_path('views/admin'));
+app('view')->prependNamespace('laravel-admin', resource_path('views/admin'));
 
 //app('view')->prependNamespace('admin', resource_path('views/admin'));

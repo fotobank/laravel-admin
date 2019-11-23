@@ -277,7 +277,7 @@ return [
     |    "skin-red", "skin-red-light", "skin-black", "skin-black-light".
     |
     */
-    'skin' => 'skin-blue-light',
+    'skin' => 'skin-green',
 
     /*
     |--------------------------------------------------------------------------
@@ -499,7 +499,7 @@ return [
 			'enable' => true,
 		],
 		'material-ui' => [
-			'enable' => true
+			'enable' => true,
 		],
 		'data-table' => [
 

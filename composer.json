@@ -4,15 +4,18 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
-    "minimum-stability": "dev",
     "repositories": [
         {
             "type": "path",
             "url": "../fotobank/laravel-admin-grid"
+        },{
+            "type": "path",
+            "url": "../fotobank/translation"
         }
     ],
     "require": {
         "php": ">=7.0.0",
+        "arrilot/laravel-widgets": "^3.13",
         "cisco/laravel-aliyunsms": "dev-master",
         "codingyu/ueditor": "^3.0",
         "dianwoung/large-file-upload": "^0.0.3",
