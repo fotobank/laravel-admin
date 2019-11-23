@@ -335,4 +335,38 @@ body {
 }
 .form-group label.control-label {
     font-size: 15px;
+    color: #009688;
+}
+.nav-tabs-custom>.nav-tabs>li.active {
+    border-top-color: #018377;
+}
+
+.popover-content {
+    font-size: 14px;
+}
+.popover-title {
+    font-size: 14px;
+    color: #009688;
+}
+.sidebar-menu li.header {
+    font-size: 16px;
+}
+.user-panel>.image>img {
+    max-width: 70px;
+}
+.main-sidebar .user-panel .info {
+    padding: 10px 0 0 20px;
+}
+.fa.fa-circle.text-success {
+    color: #45fbd8;
+}
+.column-__row_selector__ {
+    width: 60px;
+}
+.control-label .small, small {
+    font-size: 135%;
+}
+.control-label .input-sm {
+    font-size: 14px;
+    padding: 0 0 0 5px;
 }

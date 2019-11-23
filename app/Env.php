@@ -26,7 +26,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Jxlwqq\EnvManager\Env as EnvJxlwqq;
 
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Request;
@@ -95,6 +94,7 @@ class Env extends Model
 
 			    return 'true';
 
+			    // включить для вывода сообщений об успехе
 			     /*return response()->json([
 				     'status'  => true,
 				     'message' => trans('admin.delete_succeeded'),
@@ -139,7 +139,7 @@ class Env extends Model
 	}
 
 	/**
-	 * построчное чтение файла
+	 * построчное чтение файла с помощью генегатора
 	 * @return \Generator
 	 */
 	private function fileLineRead() {

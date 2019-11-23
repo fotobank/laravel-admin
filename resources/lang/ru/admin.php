@@ -5,7 +5,7 @@ return [
     'login'                 => 'Авторизация',
     'logout'                => 'Выйти',
     'setting'               => 'Настройка',
-    'name'                  => 'Имя',
+    'name'                  => 'Название',
     'username'              => 'Логин',
     'password'              => 'Пароль',
     'password_confirmation' => 'Подтверждение пароля',
@@ -104,4 +104,7 @@ return [
     'menu_titles'            => [],
     'prev'                   => 'Предыдущая',
     'next'                   => 'Следующая',
+    'id'                     => 'Номер ID',
+    'value'                  => 'Значение',
+
 ];

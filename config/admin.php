@@ -174,22 +174,22 @@ return [
     */
     'database' => [
 
-        // Database connection for following tables.
+        // Подключение к базе данных для следующих таблиц.
         'connection' => '',
 
-        // User tables and model.
+        // таблицы пользователей и модель.
         'users_table' => 'admin_users',
         'users_model' => Encore\Admin\Auth\Database\Administrator::class,
 
-        // Role table and model.
+        // Таблица Роль и модель.
         'roles_table' => 'admin_roles',
         'roles_model' => Encore\Admin\Auth\Database\Role::class,
 
-        // Permission table and model.
+        // Разрешение стол и модель.
         'permissions_table' => 'admin_permissions',
         'permissions_model' => Encore\Admin\Auth\Database\Permission::class,
 
-        // Menu table and model.
+        // Таблица меню и модель.
         'menu_table' => 'admin_menu',
         'menu_model' => Encore\Admin\Auth\Database\Menu::class,
 
@@ -561,6 +561,16 @@ return [
 			// Find more configurations http://www.daterangepicker.com/
 			'config' => [
 			]
+		],
+		// Config extension
+		'config' => [
+			// имя таблицы в базе данных для Config extension
+			'table' => 'admin_config',
+			// откуда брать конфиг
+			'name' => 'config',
+			// контролер конфигурации
+			'controller' => 'App\Http\Controllers\AdminConfigController',
+
 		],
 
 

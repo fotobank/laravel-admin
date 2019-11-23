@@ -1,6 +1,6 @@
 <div class="nav-tabs-custom">
+  
     <ul class="nav nav-tabs">
-
         @foreach($tabObj->getTabs() as $tab)
             <li {{ $tab['active'] ? 'class=active' : '' }}>
                 <a href="#tab-{{ $tab['id'] }}" data-toggle="tab">
@@ -8,8 +8,8 @@
                 </a>
             </li>
         @endforeach
-
     </ul>
+ 
     <div class="tab-content fields-group">
 
         @foreach($tabObj->getTabs() as $tab)
