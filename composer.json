@@ -51,6 +51,7 @@
         "laravel-admin-ext/media-player": "^1.0",
         "laravel-admin-ext/messages": "@dev",
         "laravel-admin-ext/php-editor": "^1.0",
+        "laravel-admin-ext/phpinfo": "^1.0",
         "laravel-admin-ext/redis-manager": "^1.2",
         "laravel-admin-ext/reporter": "^1.0",
         "laravel-admin-ext/scheduling": "^1.0",

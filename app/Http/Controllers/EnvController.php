@@ -23,43 +23,6 @@ class EnvController extends Controller
 		$this->env = new Env();
 	}
 
-	/*public function update2($id, $data = null)
-	{
-		$data = ($data) ?: request()->all();
-		// читаем строку в файле #id
-		$replaceLine = $this->env->getLineEnv($id);
-		// подставляем новые значения
-		$replaceLine[$data['name']] = $data['value'];
-
-		If($this->env->save($replaceLine)) {
-			return response()->json([
-				'status'  => true,
-				'message' => trans('admin.update_succeeded'),
-			]);
-		}
-		  return response()->json([
-			'status'  => false,
-			'message' => trans('admin.update_error'),
-		  ]);
-	}*/
-
-
-	/*public function store2()
-	{
-		$newLine = request()->all();
-
-		If($this->env->save($newLine)) {
-			return response()->json([
-				'status'  => true,
-				'message' => trans('admin.save_succeeded'),
-			]);
-		}
-		return response()->json([
-			'status'  => false,
-			'message' => trans('admin.failed'),
-		]);
-	}*/
-
 	/**
 	 * Update the specified resource in storage.
 	 *
