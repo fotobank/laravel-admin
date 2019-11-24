@@ -22,7 +22,8 @@
         "encore/laravel-admin": "^1.7",
         "facade/ignition": "^1.11",
         "fideloper/proxy": "~3.3",
-        "fotobank/laravel-admin-grid": "dev-master",
+        "fotobank/laravel-admin-grid": "^1.4",
+        "fotobank/phpinfo": "^1.1",
         "fourn/admin-config": "^1.1",
         "jxlwqq/code-mirror": "^1.0",
         "jxlwqq/composer-viewer": "^1.0",
@@ -51,7 +52,6 @@
         "laravel-admin-ext/media-player": "^1.0",
         "laravel-admin-ext/messages": "@dev",
         "laravel-admin-ext/php-editor": "^1.0",
-        "laravel-admin-ext/phpinfo": "^1.0",
         "laravel-admin-ext/redis-manager": "^1.2",
         "laravel-admin-ext/reporter": "^1.0",
         "laravel-admin-ext/scheduling": "^1.0",
@@ -119,4 +119,5 @@
         "sort-packages": true,
         "optimize-autoloader": true
     }
+
 }

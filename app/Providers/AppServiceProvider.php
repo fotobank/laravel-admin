@@ -20,6 +20,9 @@ class AppServiceProvider extends ServiceProvider
 		if (Schema::hasTable($table)) {
 			Config::load();
 		}
+		$this->publishes([
+			base_path('vendor/components')  => public_path('assets'),
+		], 'public');
 	}
 
     /**
