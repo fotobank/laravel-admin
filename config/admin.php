@@ -154,14 +154,17 @@ return [
     */
     'upload' => [
 
-        // диск в `config/filesystem.php`.
-        'disk' => 'admin',
-
+        // выбор диска в`config/filesystem.php`
+        // варианты:  local/public/s3/admin/ftp/Rackspace
+		// после выбора удалить линк storage в папке public
+        // и сделать его заново: php artisan storage:link
+        'disk' => 'public',
         // Изображение и загрузка файла путь под диском выше.
         'directory' => [
             'image' => 'images',
             'file'  => 'files',
         ],
+
     ],
 
     /*
@@ -523,6 +526,7 @@ return [
 				'min' => 1, 'max' => 5, 'step' => 1, 'size' => 'xs', 'language' => 'ru',
 			]
 		],
+		// обрезка изображений
 		'cropper' => [
 			'enable' => true,
 		],
@@ -582,7 +586,22 @@ return [
 
 			// Set access path，defaults to `phpinfo`
 			//'path' => '~phpinfo',
-		]
+		],
+		'simplemde' => [
+
+			// Set to false if you want to disable this extension
+			'enable' => true,
+
+			// If you want to set an alias for the calling method
+			//'alias' => 'markdown',
+
+			// Editor configuration
+			// https://github.com/sparksuite/simplemde-markdown-editor#configuration
+			'config' => [
+					'autofocus'   => true,
+					'placeholder' => 'xxxx',
+                 ]
+		],
 
 	],
 ];

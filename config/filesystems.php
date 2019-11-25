@@ -33,12 +33,12 @@ return [
     | Filesystem Disks
     |--------------------------------------------------------------------------
     |
-    | Here you may configure as many filesystem "disks" as you wish, and you
-    | may even configure multiple disks of the same driver. Defaults have
-    | been setup for each driver as an example of the required options.
+    | Здесь вы можете настроить так много файловых систем «дисков», как вы хотите, и вы
+    | может даже настроить несколько дисков одного и того же водителя. Значения по умолчанию имеют
+    | был настроен для каждого драйвера в качестве примера необходимых опций.
     |
     | Supported Drivers: "local", "ftp", "s3", "rackspace"
-    |
+	|
     */
 
     'disks' => [
@@ -46,15 +46,20 @@ return [
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
-        ],
 
+        ],
+        'admin' => [
+	        'driver'     => 'local',
+	        'root'       => public_path('upload'),
+	        'visibility' => 'public',
+	        'url' => env('APP_URL').'/public/upload/',
+        ],
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
-
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
@@ -62,12 +67,28 @@ return [
             'region' => env('AWS_DEFAULT_REGION'),
             'bucket' => env('AWS_BUCKET'),
         ],
-	    'admin' => [
-		    'driver'     => 'local',
-		    'root'       => public_path('upload'),
-		    'visibility' => 'public',
-		    'url' => env('APP_URL').'/public/upload/',
-	    ],
+        'ftp' => [
+	        'driver'   => 'ftp',
+	        'host'     => 'ftp.example.com',
+	        'username' => 'your-username',
+	        'password' => 'your-password',
+
+	        // Optional FTP Settings...
+	        // 'port'     => 21,
+	        // 'root'     => '',
+	        // 'passive'  => true,
+	        // 'ssl'      => true,
+	        // 'timeout'  => 30,
+        ],
+        'rackspace' => [
+	        'driver'    => 'rackspace',
+	        'username'  => 'your-username',
+	        'key'       => 'your-key',
+	        'container' => 'your-container',
+	        'endpoint'  => 'https://identity.api.rackspacecloud.com/v2.0/',
+	        'region'    => 'IAD',
+	        'url_type'  => 'publicURL',
+        ],
 
     ],
 
