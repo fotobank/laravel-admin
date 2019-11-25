@@ -39,6 +39,14 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+	protected function redirectTo()
+	{
+		if (auth()->user()->role_id == 1) {
+			return '/admin/messages';
+		}
+		return '/home';
+	}
+
     /**
      * Get a validator for an incoming registration request.
      *

@@ -38,7 +38,8 @@ class AuthController extends BaseAuthController
 
 
 	/**
-	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\Support\Facades\Redirect|\Illuminate\View\View
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|
+	 * \Illuminate\Routing\Redirector|\Illuminate\Support\Facades\Redirect|\Illuminate\View\View
 	 */
 	public function getLogin()
 	{
