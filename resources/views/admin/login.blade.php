@@ -89,7 +89,7 @@
       @endif
       </div>
       <div class="row">
-        <div class="col-xs-8">
+        <div class="col-xs-7">
           @if(config('admin.auth.remember'))
           <div class="checkbox icheck">
             <label>
@@ -100,9 +100,9 @@
           @endif
         </div>
         <!-- /.col -->
-        <div class="col-xs-4">
-          <input type="hidden" name="_token" value="{{ csrf_token() }}">
-{{--          {{ csrf_field() }}--}}
+        <div class="col-xs-5">
+{{--          <input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
+          {{ csrf_field() }}
           <button type="submit" class="btn btn-primary btn-block btn-flat">{{ trans('admin.login') }}</button>
         </div>
         <!-- /.col -->

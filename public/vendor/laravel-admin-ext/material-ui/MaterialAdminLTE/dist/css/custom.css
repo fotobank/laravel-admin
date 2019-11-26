@@ -328,3 +328,8 @@ body {
     font-size: 14px;
     padding: 0 0 0 5px;
 }
+.navbar-nav>.user-menu .user-image {
+    width: 35px;
+    height: 35px;
+    margin-top: -6px;
+}
