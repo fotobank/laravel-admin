@@ -5,8 +5,8 @@ return [
     'backup' => [
 
         /*
-         * The name of this application. You can use this name to monitor
-         * the backups.
+         * Название этого приложения. Вы можете использовать это имя для мониторинга
+         * Резервное копирование.
          */
         'name' => config('app.name'),
 
@@ -15,16 +15,17 @@ return [
             'files' => [
 
                 /*
-                 * The list of directories and files that will be included in the backup.
+                 * Список каталогов и файлов, которые будут включены в резервной копии.
                  */
                 'include' => [
                     base_path(),
                 ],
 
                 /*
-                 * These directories and files will be excluded from the backup.
+                 * Эти каталоги и файлы будут исключены из резервной копии.
                  *
-                 * Directories used by the backup process will automatically be excluded.
+                 * Каталоги, используемые процессом резервного копирования будут
+                 *  автоматически исключены.
                  */
                 'exclude' => [
                     base_path('vendor'),
@@ -32,18 +33,19 @@ return [
                 ],
 
                 /*
-                 * Determines if symlinks should be followed.
+                 * Определяет, будет ли символьные ссылки должны быть соблюдены.
                  */
                 'followLinks' => false,
             ],
 
             /*
-             * The names of the connections to the databases that should be backed up
-             * MySQL, PostgreSQL, SQLite and Mongo databases are supported.
-             *
-             * The content of the database dump may be customized for each connection
-             * by adding a 'dump' key to the connection settings in config/database.php.
-             * E.g.
+             * Названия соединений с базами данных, которые должны быть подкреплены
+             * Базы данных MySQL, PostgreSQL, SQLite и Mongo поддерживаются.
+             *
+             * Содержание дампа базы данных могут быть настроены для каждого соединения
+             * Путем добавления ключа сбрасывающий в настройках подключения
+             *  в конфигурации / database.php.
+             * Например
              * 'mysql' => [
              *       ...
              *      'dump' => [
@@ -54,7 +56,7 @@ return [
              *       ]
              * ],
              *
-             * For a complete list of available customization options, see https://github.com/spatie/db-dumper
+             * Полный список доступных параметров настройки, смотреть https://github.com/spatie/db-dumper
              */
             'databases' => [
                 'mysql',
@@ -62,27 +64,29 @@ return [
         ],
 
         /*
-         * The database dump can be compressed to decrease diskspace usage.
+         * Дамп базы данных может быть сжат, чтобы уменьшить использование
+         *  дискового пространства.
          *
-         * Out of the box Laravel-backup supplies
+         * Из коробки Laravel-резервные источники
          * Spatie\DbDumper\Compressors\GzipCompressor::class.
          *
-         * You can also create custom compressor. More info on that here:
+         * Кроме того, можно создать собственный компрессор.
+         * Более подробная информация о том здесь:
          * https://github.com/spatie/db-dumper#using-compression
          *
-         * If you do not want any compressor at all, set it to null.
+         * Если вы не хотите какой-либо компрессор вообще, установите его в нуль.
          */
         'database_dump_compressor' => null,
 
         'destination' => [
 
             /*
-             * The filename prefix used for the backup zip file.
+             * Имя файла префикс, используемый для резервного копирования архива.
              */
             'filename_prefix' => '',
 
             /*
-             * The disk names on which the backups will be stored.
+             * Названия дисков, на которых будут храниться резервные копии.
              */
             'disks' => [
                 'local',
@@ -90,17 +94,17 @@ return [
         ],
 
         /*
-         * The directory where the temporary files will be stored.
+         * Каталог, в котором будут храниться временные файлы.
          */
         'temporary_directory' => storage_path('app/backup-temp'),
     ],
 
     /*
-     * You can get notified when specific events occur. Out of the box you can use 'mail' and 'slack'.
-     * For Slack you need to install guzzlehttp/guzzle.
+     * Вы можете получить уведомление, когда происходят определенные события. Из коробки можно использовать 'mail' а также 'slack'.
+     * Для Slack вам необходимо установить guzzlehttp/guzzle.
      *
-     * You can also use your own notification classes, just make sure the class is named after one of
-     * the `Spatie\Backup\Events` classes.
+     * Вы также можете использовать свои собственные классы уведомлений, просто убедитесь,
+     *  что класс назван в честь одного из `Spatie\Backup\Events` классов.
      */
     'notifications' => [
 
@@ -114,8 +118,9 @@ return [
         ],
 
         /*
-         * Here you can specify the notifiable to which the notifications should be sent. The default
-         * notifiable will use the variables specified in this config file.
+         * Здесь вы можете указать уведомляемый, к которому должны отсылаться уведомления.
+         *  По умолчанию уведомлению будет использовать переменные,
+         *  указанные в этом файле конфигурации.
          */
         'notifiable' => \Spatie\Backup\Notifications\Notifiable::class,
 
@@ -127,7 +132,8 @@ return [
             'webhook_url' => '',
 
             /*
-             * If this is set to null the default channel of the webhook will be used.
+             * Если этот параметр установлен на нуль
+             *  канал по умолчанию webhook будет использоваться.
              */
             'channel' => null,
 
@@ -139,9 +145,9 @@ return [
     ],
 
     /*
-     * Here you can specify which backups should be monitored.
-     * If a backup does not meet the specified requirements the
-     * UnHealthyBackupWasFound event will be fired.
+     * Здесь вы можете указать, какие резервные копии должны быть проверены.
+     * Если резервная копия не соответствует установленным требованиям
+     * UnHealthyBackupWasFound событие будет уволен.
      */
     'monitorBackups' => [
         [
@@ -153,7 +159,7 @@ return [
 
         /*
         [
-            'name' => 'name of the second app',
+            'name' => 'имя второго приложения',
             'disks' => ['local', 's3'],
             'newestBackupsShouldNotBeOlderThanDays' => 1,
             'storageUsedMayNotBeHigherThanMegabytes' => 5000,
@@ -163,46 +169,50 @@ return [
 
     'cleanup' => [
         /*
-         * The strategy that will be used to cleanup old backups. The default strategy
-         * will keep all backups for a certain amount of days. After that period only
-         * a daily backup will be kept. After that period only weekly backups will
-         * be kept and so on.
+         *  Стратегия, которая будет использоваться для очистки старых резервных копий.
          *
-         * No matter how you configure it the default strategy will never
-         * delete the newest backup.
+         *  Стратегия по умолчанию будет хранить все резервные копии в течение
+         *  определенного количества дней. Только после этого периода ежедневное резервное
+         *  копирование будет сохранено. После этого периода только еженедельные резервные
+         *  копии будут быть и так далее.
+         *
+         * Независимо от того, как настроить его стратегия по умолчанию никогда не будет
+         * удалена новейшая копия.
          */
         'strategy' => \Spatie\Backup\Tasks\Cleanup\Strategies\DefaultStrategy::class,
 
         'defaultStrategy' => [
 
             /*
-             * The number of days for which backups must be kept.
+             * Количество дней, в течение которых должны храниться резервные копии.
              */
             'keepAllBackupsForDays' => 7,
 
             /*
-             * The number of days for which daily backups must be kept.
+             * Количество дней, в течение которых необходимо хранить ежедневные резервные копии.
              */
             'keepDailyBackupsForDays' => 16,
 
             /*
-             * The number of weeks for which one weekly backup must be kept.
+             * Количество недель, через которые должны быть сохранена копия.
              */
             'keepWeeklyBackupsForWeeks' => 8,
 
             /*
-             * The number of months for which one monthly backup must be kept.
+             * Месячные копии
+             * Количество месяцев в течении которых хранятся ежемесячные копии
              */
             'keepMonthlyBackupsForMonths' => 4,
 
             /*
-             * The number of years for which one yearly backup must be kept.
+             * Годовые копии
+             * Количество лет в течении которых хранятся годовые копии
              */
             'keepYearlyBackupsForYears' => 2,
 
             /*
-             * After cleaning up the backups remove the oldest backup until
-             * this amount of megabytes has been reached.
+             * Количество места на  диске, после достижения которого старые копии
+             *  будут удаляться.
              */
             'deleteOldestBackupsWhenUsingMoreMegabytesThan' => 5000,
         ],
