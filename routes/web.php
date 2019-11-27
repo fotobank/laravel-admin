@@ -11,9 +11,13 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 // Exception routes
 Route::get('exception/index', 'ExceptionController@index');
+
+
+

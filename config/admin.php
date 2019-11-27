@@ -406,7 +406,8 @@ return [
 			'prefix' => 'api',
 			// auth guard for api
 			'guard'  => 'api',
-			// If you are not using the default user model as the authentication model, set it up
+			//Если вы не используете модель пользователя по умолчанию
+			// в качестве модели аутентификации, установите его
 			'user_retriever' => function ($id) {
 				return \App\User::find($id);
 			},

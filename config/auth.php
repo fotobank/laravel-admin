@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Authentication Defaults
+    | Authentication Defaults  Аутентификация по умолчанию
     |--------------------------------------------------------------------------
     |
     | This option controls the default authentication "guard" and password
@@ -24,7 +24,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Authentication Guards
+    | Authentication Guards  гвардейская аутентификации
     |--------------------------------------------------------------------------
     |
     | Next, you may define every authentication guard for your application.
@@ -51,6 +51,11 @@ return [
             'provider' => 'users',
         ],
 
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -59,7 +64,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | User Providers
+    | User Providers  Провайдеры пользователей
     |--------------------------------------------------------------------------
     |
     | All authentication drivers have a user provider. This defines how the
