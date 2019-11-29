@@ -15,10 +15,10 @@
     {!! Admin::css() !!}
     <script src="{{ Admin::jQuery() }}"></script>
     {!! Admin::headerJs() !!}
-{{-- translation-manager --}}
+    
+     {{-- translation-manager --}}
     @include('translation-manager::headerJs')
 
-    
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -46,8 +46,10 @@
         <div id="app">
         @yield('content')
         </div>
+        
         {{-- translation-manager --}}
         @include('translation-manager::js')
+        
         {!! Admin::script() !!}
         {!! Admin::html() !!}
     </div>

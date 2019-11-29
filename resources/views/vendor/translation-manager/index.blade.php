@@ -25,6 +25,10 @@
 
     </section>
 
+    @push('scripts')
+        <script src="{{ asset('public/vendor/translation-manager/public/js/rails.js') }}"></script>
+    @endpush
+    
     <section class="content">
 
         @include('admin::partials.alerts')

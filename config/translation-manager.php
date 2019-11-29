@@ -13,7 +13,10 @@ return [
     'route'          => [
         'prefix'     => config('admin.route.prefix') . '/translations',
         'namespace' => 'Barryvdh\\TranslationManager',
-        'middleware' => ['web', 'admin'],
+        'middleware' => [
+        	'web',
+	        'admin'
+        ],
                 ],
 
     /**
@@ -35,7 +38,10 @@ return [
      *        'validation',
      *    )
      */
-    'exclude_groups' => [],
+    'exclude_groups' => [
+	    'ar','az','es','fa','fr','he','id','ja','ko','ms','nl','pl','pt','pt-BR',
+	    'tr','zh-CN','zh-TW'
+    ],
 
     /**
      * Исключите определенные языки из Laravel Translation Manager.

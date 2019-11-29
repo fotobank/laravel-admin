@@ -15,7 +15,9 @@
         @foreach($submit_redirects as $value => $redirect)
             @if(in_array($redirect, $checkboxes))
             <label class="pull-right" style="margin: 5px 10px 0 0;">
-                <input type="checkbox" class="after-submit" name="after-save" value="{{ $value }}" {{ ($default_check == $redirect) ? 'checked' : '' }}> {{ trans("admin.{$redirect}") }}
+                <input type="checkbox" class="after-submit" name="after-save"
+                       value="{{ $value }}" {{ ($default_check == $redirect) ? 'checked' : '' }}
+               > {{ tr("admin.{$redirect}") }}  {{--  tr() синоним для trans() --}}
             </label>
             @endif
         @endforeach

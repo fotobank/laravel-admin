@@ -31,3 +31,14 @@ app('view')->prependNamespace('laravel-admin', resource_path('views/admin'));
 
 //app('view')->prependNamespace('admin-config', resource_path('views/admin'));
 app('view')->prependNamespace('admin', resource_path('views/admin'));
+
+// функция синоним для trans(...)
+if (!function_exists('tr')) {
+	function tr($key = null, $replace = [], $locale = null)
+	{
+		$path = resource_path('lang/' . $locale . '/' . $key . '.php');
+		if (is_file($path))
+			return include $path;
+		return [];
+	}
+}

@@ -49,13 +49,15 @@
         $('.form-import').on('ajax:success', function (e, data) {
             $('div.success-import strong.counter').text(data.counter);
             $('div.success-import').slideDown();
-            window.location.reload();
+            // window.location.reload();
+            setTimeout(function() { window.location=window.location;},12000);
         });
 
         $('.form-find').on('ajax:success', function (e, data) {
             $('div.success-find strong.counter').text(data.counter);
             $('div.success-find').slideDown();
-            window.location.reload();
+            // window.location.reload();
+            setTimeout(function() { window.location=window.location;},12000);
         });
 
         $('.form-publish').on('ajax:success', function (e, data) {
