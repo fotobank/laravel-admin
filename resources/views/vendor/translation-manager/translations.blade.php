@@ -86,9 +86,19 @@
 	legend {
 		 font-size: 21px;
 	}
+	.outer {
+		position: relative;
+	}
+	
+	.inner {
+		position: absolute;
+		margin-top: -50px;
+		margin-left: 20%;
+		z-index: 999;
+	}
 
 </style>
-<section class="content">
+<section class="content outer">
 	<header class="navbar" id="top" role="banner">
 		<div class="container-fluid">
 			<div class="navbar-header col-md-3">
@@ -117,26 +127,25 @@
 					</form>
 				</fieldset>
 			@endif
-			<div class="col-md-7 alert alert-success success-import" style="display:none;">
-				<p>Сделан импорт <strong class="counter">N</strong> групп! Для обновления групп страница будет перезагруженна
-					через 12 сек!</p>
+		</div>
+	</header>
+			<div class="col-md-6 alert alert-success success-import inner" style="display:none;">
+				<p>Сделан импорт <strong class="counter">N</strong> групп! Для обновления групп страница будет перезагруженна через 10 сек!</p>
 			</div>
-			<div class="col-md-7 alert alert-success success-find" style="display:none;">
-				<p>Сделан поиск переводов, найдено <strong class="counter">N</strong> элементов!</p>
+			<div class="col-md-7 alert alert-success success-find inner" style="display:none;">
+				<p>Сделан поиск переводов, найдено <strong class="counter">N</strong> элементов! Для обновления групп страница будет перезагруженна через 10 сек!</p>
 			</div>
-			<div class="col-md-7 alert alert-success success-publish" style="display:none;">
+			<div class="col-md-6 alert alert-success success-publish inner" style="display:none;">
 				<p>Совершены публикации переводов для группы '{{ $group }}'!</p>
 			</div>
-			<div class="col-md-7 alert alert-success success-publish-all" style="display:none;">
-				<p>Совершены публикации переводов для всей группы!</p>
+			<div class="col-md-6 alert alert-success success-publish-all inner" style="display:none;">
+				<p>Совершены публикации переводов для всех групп!</p>
 			</div>
 			@if(Session::has('successPublish'))
-				<div class="col-md-7 alert alert-info">
+				<div class="col-md-6 alert alert-info inner">
 					{{ Session::get('successPublish') }}
 				</div>
 			@endif
-		</div>
-	</header>
 	
 	<div class="row">
 		<div class="col-md-12">
@@ -185,7 +194,7 @@
 									</form>
 								@endif
 								@if($group)
-									<legend>Редактирование группы</legend>
+									<legend>{{ trans('edit_group') }}</legend>
 										<div class="navbar-form navbar-right">
 											<a style="float: right;" href="{{ action('\Barryvdh\TranslationManager\Controller@getIndex') }}"
 												 class="btn btn-default">Назад</a>
@@ -197,19 +206,20 @@
 										<p>
 											В настоящее время поддерживаются языки:
 										</p>
+										@php ($locales = config("admin.extensions.multi-language.languages"))
 										<form class="form-remove-locale" method="POST" role="form"
 													action="{{ action('\Barryvdh\TranslationManager\Controller@postRemoveLocale') }}"
 													data-confirm="Вы уверены, что хотите удалить эту локаль и все ее данные?">
 											{{ csrf_field() }}
 											<ul class="list-locales">
-												@foreach($locales as $locale)
+												@foreach($locales as $key => $locale)
 													<li>
 														<div class="form-group">
 															<button type="submit" name="remove-locale[{{ $locale }}]" class="btn btn-danger btn-xs"
 																			data-disable-with="...">
 																&times;
 															</button>
-															{{ $locale }}
+															{{ $key }}
 														
 														</div>
 													</li>
@@ -221,7 +231,7 @@
 											{{ csrf_field() }}
 											<div class="input-group">
 													<input type="text" name="new-locale" class="form-control"
-																 placeholder="добавить новый язык"/>
+																 placeholder="добавить локаль"/>
 												<span class="input-group-btn">
 													<button type="submit" class="btn btn-default" data-disable-with="Добавление..">
 															<i class="fa fa-plus">&nbsp;</i>Добавить</button>
@@ -229,6 +239,10 @@
 											</div>
 										</form>
 									</fieldset>
+										<p class="alert alert-secondary">После добавления локали необходимо
+											в файле конфигураций <code>config/admin.php</code> в <code>extensions.multi-language.languages[]</code>
+											добавить новый язык. После этого он будет доступен для редактирования.
+										</p>
 								@endif
 						</div>
 						<div class="box-footer"></div>

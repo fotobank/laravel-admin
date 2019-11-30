@@ -50,14 +50,14 @@
             $('div.success-import strong.counter').text(data.counter);
             $('div.success-import').slideDown();
             // window.location.reload();
-            setTimeout(function() { window.location=window.location;},12000);
+            setTimeout(function() { window.location=window.location;},10000);
         });
 
         $('.form-find').on('ajax:success', function (e, data) {
             $('div.success-find strong.counter').text(data.counter);
             $('div.success-find').slideDown();
             // window.location.reload();
-            setTimeout(function() { window.location=window.location;},12000);
+            setTimeout(function() { window.location=window.location;},10000);
         });
 
         $('.form-publish').on('ajax:success', function (e, data) {

@@ -15,7 +15,7 @@
     {!! Admin::css() !!}
     <script src="{{ Admin::jQuery() }}"></script>
     {!! Admin::headerJs() !!}
-    
+   
      {{-- translation-manager --}}
     @include('translation-manager::headerJs')
 
