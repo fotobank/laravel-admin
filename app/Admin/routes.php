@@ -56,3 +56,10 @@ Route::group($config, function(Router $router)
 	$router->post('/publish/{groupKey}', 'Controller@postPublish')->where('groupKey', '.*');
 	$router->post('/translate-missing', 'Controller@postTranslateMissing');
 });
+
+$config = config('translation-manager.route', []);
+$config['namespace'] = 'App\\Http\\Controllers';
+Route::group($config, function(Router $router)
+{
+	$router->post('/clear-table', 'TranslationManagerController@clearTable');
+});

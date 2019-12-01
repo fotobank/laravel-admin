@@ -1,4 +1,3 @@
-
 <style>
 	a.status-1{
 		font-weight: bold;
@@ -45,43 +44,61 @@
                 row.remove();
             } );
         });
-
+        {{--время показа сообщения--}}
+        var live_time = 10000;
         $('.form-import').on('ajax:success', function (e, data) {
             $('div.success-import strong.counter').text(data.counter);
             $('div.success-import').slideDown();
             // window.location.reload();
-            setTimeout(function() { window.location=window.location;},10000);
+            setTimeout(function() { window.location=window.location;},live_time);
         });
 
         $('.form-find').on('ajax:success', function (e, data) {
             $('div.success-find strong.counter').text(data.counter);
             $('div.success-find').slideDown();
             // window.location.reload();
-            setTimeout(function() { window.location=window.location;},10000);
+            setTimeout(function() { window.location=window.location;},live_time);
         });
 
         $('.form-publish').on('ajax:success', function (e, data) {
             $('div.success-publish').slideDown();
+            // window.location.reload();
+            setTimeout(function() { $('div.success-publish').slideUp();},live_time);
         });
 
         $('.form-publish-all').on('ajax:success', function (e, data) {
             $('div.success-publish-all').slideDown();
+            // window.location.reload();
+            setTimeout(function() { $('div.success-publish-all').slideUp();},live_time);
+        });
+        $('.form-clear').on('ajax:success', function (e, data) {
+            $('div.success-clear').slideDown();
+            // window.location.reload();
+            setTimeout(function() { $('div.success-clear').slideUp();},live_time);
         });
         $('.enable-auto-translate-group').click(function (event) {
             event.preventDefault();
             $('.autotranslate-block-group').removeClass('hidden');
             $('.enable-auto-translate-group').addClass('hidden');
-        })
-        $('#base-locale').change(function (event) {
+        });
+        // не используется
+        /*$('#base-locale').change(function (event) {
             console.log($(this).val());
             $.cookie('base_locale', $(this).val());
-        })
-        if (typeof $.cookie('base_locale') !== 'undefined') {
+        });*/
+        /*if (typeof $.cookie('base_locale') !== 'undefined') {
             $('#base-locale').val($.cookie('base_locale'));
-        }
-
-    })
+        }*/
+    });
+    
+    // прелоадер 2 типа
+    // $content = $(".cssload-preloader");
+    $content = $(".cssload-container");
+    $(document).on({
+        ajaxStart: function() { $content.removeClass("hidden");    },
+        ajaxStop: function() { $content.addClass ("hidden"); }
+    });
+	
 </script>
-
 
 
