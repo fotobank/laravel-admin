@@ -18,8 +18,9 @@ class TranslationManagerController extends BarryvdhController
 	}
 
 	public function clearTable() {
-	//	DB::statement('truncate table ltm_translations');
+
 		DB::table('ltm_translations')->truncate();
+
 	}
 
 }

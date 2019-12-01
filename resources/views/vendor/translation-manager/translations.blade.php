@@ -684,19 +684,19 @@
 		</div>
 	</header>
 			<div class="col-md-6 alert alert-success success-import inner" style="display:none;">
-				<p>Сделан импорт <strong class="counter">N</strong> групп! Для обновления групп страница будет перезагруженна через 10 сек!</p>
+				<p>Сделан импорт <strong class="counter">N</strong> лексем! Для обновления групп страница будет перезагруженна через 10 сек!</p>
 			</div>
 			<div class="col-md-7 alert alert-success success-find inner" style="display:none;">
-				<p>Сделан поиск переводов, найдено <strong class="counter">N</strong> элементов! Для обновления групп страница будет перезагруженна через 10 сек!</p>
+				<p>Сделан поиск переводов, найдено <strong class="counter">N</strong> лексем! Для обновления групп страница будет перезагруженна через 10 сек!</p>
 			</div>
 			<div class="col-md-6 alert alert-success success-publish inner" style="display:none;">
 				<p>Совершены публикации переводов для группы '{{ $group }}'!</p>
 			</div>
 			<div class="col-md-6 alert alert-success success-publish-all inner" style="display:none;">
-				<p>Совершены публикации переводов для всех групп!</p>
+				<p>Совершены публикации всех групп переводов!</p>
 			</div>
 	     <div class="col-md-6 alert alert-success success-clear inner" style="display:none;">
-				<p>Таблица переводов очищена.</p>
+				<p>Таблица лексем очищена.</p>
 			</div>
 			@if(Session::has('successPublish'))
 				<div class="col-md-6 alert alert-info inner">
@@ -719,37 +719,44 @@
 						</div>
 						<div class="box-body">
 								@if(!isset($group))
-								<legend>{{trans('translations.clearTable')}}</legend>
 								<form class="form-clear" method="POST"
 											action="{{ action('\App\Http\Controllers\TranslationManagerController@clearTable') }}" data-remote="true"
 											role="form"
-											data-confirm="Внимание! Вы уверены, что хотите очистить от данных таблицу переводов?">
-									<div class="input-group">
-										{{ csrf_field() }}
-										<button type="submit" class="btn btn-danger" data-disable-with="Очистка..">
-											<i class="fa fa-database"></i> Очистить базу
-										</button>
+											data-confirm="Внимание! Вы уверены, что хотите очистить таблицу лексем?">
+									{{ csrf_field() }}
+									
+									<div class="form-group is-empty">
+										<label class="control-label">{{trans('translations.clearTable')}}</label>
+											<div class="input-group">
+												<span class="input-group-addon">
+													<button type="submit" class="btn btn-danger navbar-form navbar-right"
+																	data-disable-with="Очистка..">
+														<i class="fa fa-trash"></i> Удалить все переводы
+													</button>
+                    		</span>
+											</div>
 									</div>
+									
 								</form>
 									<br>
-									<legend>Загрузка групп</legend>
 									<form class="form-import hide-content" method="POST"
 												action="{{ action('\Barryvdh\TranslationManager\Controller@postImport') }}"
 												data-remote="true" role="form">
 										{{ csrf_field() }}
-										<div class="input-group">
-											<select name="replace" class="form-control">
-												<option value="0">добавить новые переводы</option>
-												<option value="1">заменить существующие переводы</option>
-											</select>
-											<span class="input-group-btn">
+										<div class="form-group is-empty">
+											<label for="sample-value" class="control-label">Загрузка групп</label>
+												<div class="input-group">
+													<span class="input-group-addon"><i class="fa fa-download"></i></span>
+													<select name="replace" class="form-control">
+														<option value="0">загрузить новые переводы</option>
+														<option value="1">заменить существующие переводы</option>
+													</select>
+													<span class="input-group-addon">
 													<button type="submit" class="btn btn-default"
 																	data-disable-with="Загрузка..">
 														<i class="fa fa-plus"></i></button>
-                        </span>
-											<div class="overlay hidden">
-												<i class="fa fa-refresh fa-spin"></i>
-											</div>
+                    		</span>
+												</div>
 										</div>
 									</form>
 									<br>
@@ -757,17 +764,23 @@
 												action="{{ action('\Barryvdh\TranslationManager\Controller@postFind') }}" data-remote="true"
 												role="form"
 												data-confirm="Вы уверены, что Вы хотите сканировать вашу папку приложения? Все найденные ключи перевода будут добавлены в базу данных.">
-										
-										<div class="input-group">
-											{{ csrf_field() }}
-											<button type="submit" class="btn btn-default" data-disable-with="Поиск..">
-												<i class="fa fa-search"></i> Поиск переводов в файлах
-											</button>
+										{{ csrf_field() }}
+										<div class="form-group is-empty">
+											<label class="control-label">Поиск переводов в файлах</label>
+												<div class="input-group">
+												<span class="input-group-addon">
+													<button type="submit" class="btn btn-default navbar-form navbar-right" data-disable-with="Поиск..">
+												<i class="fa fa-search"></i> Найти все</button>
+                    		</span>
+												</div>
 										</div>
 									</form>
 								@endif
 								@if($group)
-									<legend>{{trans('translations.edit_group')}}</legend>
+										<div class="form-group is-empty">
+											<label class="control-label">{{trans('translations.edit_group')}}</label>
+											
+										</div>
 										<div class="navbar-form navbar-right">
 											<a style="float: right;"
 												 href="{{ action('\Barryvdh\TranslationManager\Controller@getIndex') }}"
@@ -775,7 +788,9 @@
 										</div>
 								@else
 									<br>
-										<legend>Локали</legend>
+										<div class="form-group is-empty">
+											<label class="control-label">Локали</label>
+										</div>
 									{{--<fieldset>
 										<legend>Локали</legend>
 										<p>
@@ -828,41 +843,44 @@
 				<div class="col-md-9">
 					<div class="box box-info">
 						<div class="box-header with-border">
-							{{--							<legend class="box-title">Редактор перевода</legend>--}}
-							
+									<legend class="box-title">Редактор переводов</legend>
+							<br>
 							<form role="form" method="POST" class="form-horizontal"
 										action="{{ action('\Barryvdh\TranslationManager\Controller@postAddGroup') }}">
 								{{ csrf_field() }}
-								<div class="input-group">
-                	  	  <span class="input-group-addon">
-													<legend>Выбрать группу</legend>
-                    		</span>
-										<div class="form-group col-xs-8">
+								<div class="form-group   is-empty">
+									<label for="sample-value" class="col-sm-3 control-label">Выбрать группу</label>
+									<div class="col-sm-7">
+										<div class="input-group">
+											<span class="input-group-addon" style="padding-left: 18px;">
+												<i class="fa fa-bars"></i>&nbsp;</span>
 											<select name="group" id="group" class="form-control group-select">
-													@foreach($groups as $key => $value)
-															<option value="{{ $key }}" {{ $key == $group ? ' selected' : '' }}
-																	>{{ $value }}
-															</option>
-													@endforeach
+												@foreach($groups as $key => $value)
+													<option value="{{ $key }}" {{ $key == $group ? ' selected' : '' }}
+													>{{ $value }}
+													</option>
+												@endforeach
 											</select>
 										</div>
+									</div>
 								</div>
-							
+								
 								@if(!isset($group))
 									<p class="alert alert-secondary">Если ни одна из групп не видна, убедитесь, что вы
 										запустили миграцию и импортировали переводы на левой вкладке.</p>
-									
-									<div class="input-group">
-										<span class="input-group-addon">
-													<legend>Новая группа переводов</legend>
-                  </span>
-										<span class="input-group-addon">
+								
+									<div class="form-group   is-empty">
+										<label for="sample-value" class="col-sm-3  control-label">Новая группа переводов</label>
+										<div class="col-sm-8">
+											<div class="input-group">
+												<span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
+												<input type="text" name="new-group" id="new-group" class="form-control"
+															 placeholder="создать группу переводов"/>
+												<span class="input-group-addon">
 													<button type="submit" class="btn btn-default" name="add-group"
 																	value="Добавить"><i class="fa fa-plus"></i> Создать</button>
                     		</span>
-										<div class="col-xs-5">
-											<input type="text" name="new-group" id="new-group" class="form-control"
-														 placeholder="создать группу переводов"/>
+											</div>
 										</div>
 									</div>
 									
@@ -877,17 +895,19 @@
 								<form action="{{ action('\Barryvdh\TranslationManager\Controller@postAdd', array($group)) }}"
 											method="POST" role="form">
 									{{ csrf_field() }}
-									<div class="input-group">
-                	  	  <span class="input-group-addon">
-													<legend>Добавить новые ключи в этой группе</legend>
-                    		</span>
-										<div class="form-group col-xs-7">
-											<textarea class="form-control" rows="3" name="keys"
-																placeholder="Добавьте 1 ключ в каждой строке, без префикса группы">
+									<div class="form-group is-empty">
+										<label for="sample-value" class="col-sm-3  control-label">Добавить новые ключи в этой группе</label>
+										<div class="col-sm-8">
+											<div class="input-group">
+												<span class="input-group-addon"><i class="fa fa-pencil-square-o"></i></span>
+												<textarea class="form-control" rows="3" name="keys"
+																	placeholder="Добавьте 1 ключ в каждой строке, без префикса группы">
 											</textarea>
-											<button type="submit" value="Добавить ключ" class="btn btn-default">
-												<i class="fa fa-plus"></i> Добавить
-											</button>
+												<span class="input-group-addon">
+													<button type="submit" value="Добавить ключ" class="btn btn-default">
+												<i class="fa fa-plus"></i> Добавить</button>
+                    		</span>
+											</div>
 										</div>
 									</div>
 								</form>
