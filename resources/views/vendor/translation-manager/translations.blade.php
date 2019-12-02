@@ -687,7 +687,7 @@
 			@endisset
 		</div>
 	</header>
-{{--	конец шапка--}}
+{{--	конец шапки--}}
 {{--	сообщения--}}
 			<div class="col-md-6 alert alert-success success-import inner" style="display:none;">
 				<p>Сделан импорт <strong class="counter">N</strong> ключей.
@@ -714,7 +714,7 @@
 					{{ Session::get('successPublish') }}
 				</div>
 			@endif
-{{--	конец сообщения--}}
+{{--	конец сообщений--}}
 	<div class="row">
 		<div class="col-md-12">
 			<div class="row">
@@ -731,13 +731,11 @@
 						<div class="box-body">
 							
 								<form class="form-clear" method="POST"
-              {{--	action="{{ action('\App\Admin\Translations\TranslationManagerController@postReset') }}"--}}
 											action="{{ route('translations:reset') }}"
 											data-remote="true"
 											role="form"
 											data-confirm="Внимание! Вы уверены, что хотите очистить таблицу переводов ключей?">
 									{{ csrf_field() }}
-									
 									<div class="form-group is-empty">
 										<label class="control-label">{{trans('translations.reset')}}</label>
 											<div class="input-group">
@@ -773,9 +771,8 @@
 										</div>
 									</form>
 									<br>
-									<form class="form-find" method="POST"
-												action="{{ route('translations:find') }} " data-remote="true"
-												role="form"
+									<form class="form-find" method="POST" action="{{ route('translations:find') }}"
+												data-remote="true" role="form"
 												data-confirm="Вы уверены, что Вы хотите сканировать вашу папку приложения? Все найденные ключи перевода будут добавлены в базу данных.">
 										{{ csrf_field() }}
 										<div class="form-group is-empty">
@@ -793,7 +790,6 @@
 										<div class="form-group is-empty">
 											<label class="control-label">Локали</label>
 										</div>
-									
 										<p class="alert alert-secondary">Для добавления локали необходимо
 											в файле конфигураций <code>config/admin.php</code>
 											в <code>extensions.multi-language.languages[]</code>
