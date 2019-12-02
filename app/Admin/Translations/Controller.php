@@ -25,12 +25,11 @@
 
 namespace App\Admin\Translations;
 
-use Barryvdh\TranslationManager\Manager;
+
 use Barryvdh\TranslationManager\Models\Translation;
-use DB;
 use Barryvdh\TranslationManager\Controller as BarryvdhController;
 
-class TranslationManagerController extends BarryvdhController
+class Controller extends BarryvdhController
 {
 	/**
 	 * TranslatiomManagerController constructor.
@@ -47,6 +46,13 @@ class TranslationManagerController extends BarryvdhController
 
 		Translation::truncate();
 
+	}
+
+	public function postFind()
+	{
+		$numFound = $this->manager->findTranslations();
+
+		return ['status' => 'ok', 'counter' => (int) $numFound];
 	}
 
 }

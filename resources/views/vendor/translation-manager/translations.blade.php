@@ -656,6 +656,7 @@
 
 @guest
 <section class="content outer">
+{{--	шапка--}}
 	<header class="navbar" id="top" role="banner">
 		<div class="container-fluid">
 			<div class="navbar-header col-md-3">
@@ -686,6 +687,8 @@
 			@endisset
 		</div>
 	</header>
+{{--	конец шапка--}}
+{{--	сообщения--}}
 			<div class="col-md-6 alert alert-success success-import inner" style="display:none;">
 				<p>Сделан импорт <strong class="counter">N</strong> ключей.
 					Для обновления групп страница будет перезагруженна через
@@ -711,7 +714,7 @@
 					{{ Session::get('successPublish') }}
 				</div>
 			@endif
-	
+{{--	конец сообщения--}}
 	<div class="row">
 		<div class="col-md-12">
 			<div class="row">
@@ -726,7 +729,7 @@
 							</div>
 						</div>
 						<div class="box-body">
-								@empty($group)
+							
 								<form class="form-clear" method="POST"
               {{--	action="{{ action('\App\Admin\Translations\TranslationManagerController@postReset') }}"--}}
 											action="{{ route('translations:reset') }}"
@@ -754,12 +757,12 @@
 												data-remote="true" role="form">
 										{{ csrf_field() }}
 										<div class="form-group is-empty">
-											<label class="control-label">Загрузка групп</label>
+											<label class="control-label">Импорт групп из файлов app/lang</label>
 												<div class="input-group">
 													<span class="input-group-addon"><i class="fa fa-download"></i></span>
 													<select name="replace" class="form-control">
-														<option value="0">загрузить новые переводы</option>
-														<option value="1">заменить существующие переводы</option>
+														<option value="0">пропускать существующие ключи</option>
+														<option value="1">заменять существующих ключей</option>
 													</select>
 													<span class="input-group-addon">
 													<button type="submit" class="btn btn-default"
@@ -771,12 +774,12 @@
 									</form>
 									<br>
 									<form class="form-find" method="POST"
-												action="{{ action('\Barryvdh\TranslationManager\Controller@postFind') }}" data-remote="true"
+												action="{{ route('translations:find') }} " data-remote="true"
 												role="form"
 												data-confirm="Вы уверены, что Вы хотите сканировать вашу папку приложения? Все найденные ключи перевода будут добавлены в базу данных.">
 										{{ csrf_field() }}
 										<div class="form-group is-empty">
-											<label class="control-label">Поиск переводов в файлах</label>
+											<label class="control-label">Поиск новых переводов в файлах</label>
 												<div class="input-group">
 												<span class="input-group-addon">
 													<button type="submit" class="btn btn-default navbar-form navbar-right" data-disable-with="Поиск..">
@@ -785,66 +788,18 @@
 												</div>
 										</div>
 									</form>
-								@endempty
-								@isset($group)
-										<div class="form-group is-empty">
-											<label class="control-label">{{trans('translations.edit_group')}}</label>
-											
-										</div>
-										<div class="navbar-form navbar-right">
-											<a style="float: right;"
-												 href="{{ action('\Barryvdh\TranslationManager\Controller@getIndex') }}"
-												 class="btn btn-default">Назад</a>
-										</div>
-								@else
 									<br>
+							
 										<div class="form-group is-empty">
 											<label class="control-label">Локали</label>
 										</div>
-									{{--<fieldset>
-										<legend>Локали</legend>
-										<p>
-											В настоящее время поддерживаются языки:
-										</p>
-										@php ($locales = config("admin.extensions.multi-language.languages"))
-										<form class="form-remove-locale" method="POST" role="form"
-													action="{{ action('\Barryvdh\TranslationManager\Controller@postRemoveLocale') }}"
-													data-confirm="Вы уверены, что хотите удалить эту локаль и все ее данные?">
-											{{ csrf_field() }}
-											<ul class="list-locales">
-												@foreach($locales as $key => $locale)
-													<li>
-														<div class="form-group">
-															<button type="submit" name="remove-locale[{{ $locale }}]" class="btn btn-danger btn-xs"
-																			data-disable-with="...">
-																&times;
-															</button>
-															{{ $key }}
-														
-														</div>
-													</li>
-												@endforeach
-											</ul>
-										</form>
-										<form class="form-add-locale" method="POST" role="form"
-													action="{{ action('\Barryvdh\TranslationManager\Controller@postAddLocale') }}">
-											{{ csrf_field() }}
-											<div class="input-group">
-													<input type="text" name="new-locale" class="form-control"
-																 placeholder="добавить локаль"/>
-												<span class="input-group-btn">
-													<button type="submit" class="btn btn-default" data-disable-with="Добавление..">
-															<i class="fa fa-plus">&nbsp;</i>Добавить</button>
-                        </span>
-											</div>
-										</form>
-									</fieldset>--}}
+									
 										<p class="alert alert-secondary">Для добавления локали необходимо
 											в файле конфигураций <code>config/admin.php</code>
 											в <code>extensions.multi-language.languages[]</code>
 											добавить новый язык. После этого он будет доступен для редактирования.
 										</p>
-								@endisset
+									
 						</div>
 						<div class="box-footer"></div>
 					</div>
@@ -883,19 +838,17 @@
 								<p><span class="label label-primary">php artisan translations:reset</span>
 								- команда сброса базы данных, чтобы начать с пустой базы (с помощью нового импорта). Убедитесь в том, что вы экспортировали свою работу, если это необходимо, прежде чем очищать базу.
 								</p>
-								
 							</div>
 					   </div>
 						<div class="box-footer"></div>
 					</div>
-					
-					
 				</div>
+				
 {{--				правая панель--}}
 				<div class="col-md-9">
 					<div class="box box-info">
 						<div class="box-header with-border">
-									<legend class="box-title">Редактор переводов</legend>
+									<legend class="box-title">Редактор группы {{ $group }}</legend>
 							<br>
 							<form role="form" method="POST" class="form-horizontal"
 										action="{{ action('\Barryvdh\TranslationManager\Controller@postAddGroup') }}">
@@ -921,7 +874,7 @@
 									<p class="alert alert-secondary">Если ни одна из групп не видна, убедитесь, что вы
 										запустили миграцию и импортировали переводы на левой вкладке.</p>
 								
-									<div class="form-group   is-empty">
+									<div class="form-group is-empty">
 										<label for="new-group" class="col-sm-3  control-label">Новая группа переводов</label>
 										<div class="col-sm-8">
 											<div class="input-group">
@@ -945,15 +898,14 @@
 									 class="label label-success">Всего лексем: {{ $numTranslations }} , изменено: {{ $numChanged }} </span>
 								</div>
 								<form action="{{ action('\Barryvdh\TranslationManager\Controller@postAdd', array($group)) }}"
-											method="POST" role="form">
+											method="POST" role="form" class="form-horizontal" >
 									{{ csrf_field() }}
 									<div class="form-group is-empty">
-										<label for="new-keys" class="col-sm-3  control-label">Добавить новые ключи в группу
-											{{ $group }}</label>
+										<label class="col-sm-3 control-label">Добавить новые ключи</label>
 										<div class="col-sm-8">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="fa fa-pencil-square-o"></i></span>
-												<textarea id = "new-keys" class="form-control" rows="3" name="keys"
+												<textarea class="form-control" rows="3" name="keys"
 												 placeholder="Добавьте 1 ключ в каждой строке, без префикса группы"></textarea>
 												<span class="input-group-addon">
 													<button type="submit" value="Добавить ключ" class="btn btn-default">
@@ -1027,10 +979,8 @@
 								</form>
 							</div>
 						@endisset
-					
 					</div>
 				</div>
-			
 			</div>
 		</div>
 	</div>

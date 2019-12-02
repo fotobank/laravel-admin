@@ -164,9 +164,9 @@ return [
         Illuminate\Session\SessionServiceProvider::class,
         // ----------------------------------------------------------
         // использовать в продакшене
-//        Illuminate\Translation\TranslationServiceProvider::class,
-        // использовать в lokal при разработке
-        Barryvdh\TranslationManager\TranslationServiceProvider::class,
+        Illuminate\Translation\TranslationServiceProvider::class,
+        // использовать в lokal при разработке для нахождения непереведенных конструкций
+//        Barryvdh\TranslationManager\TranslationServiceProvider::class,
         //-----------------------------------------------------------
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,

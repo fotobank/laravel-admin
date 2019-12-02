@@ -61,6 +61,7 @@ $config = config('translation-manager.route', []);
 $config['namespace'] = 'App\\Admin\\Translations';
 Route::group($config, function(Router $router)
 {
-	$router->post('/reset', 'TranslationManagerController@postReset')
+	$router->post('/reset', 'Controller@postReset')
 		->name('translations:reset');
+	$router->post('/find', 'Controller@postFind')->name('translations:find');
 });
