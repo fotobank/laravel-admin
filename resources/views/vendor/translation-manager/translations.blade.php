@@ -99,7 +99,7 @@
 	
 	/* модальное окно загрузки 1 */
 	.cssload-preloader {
-		font-family: Arial, Tahoma;
+		font-family: Arial, Tahoma, serif;
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -647,11 +647,14 @@
 			-moz-transform-origin: 50% -170%;
 		}
 	}
-	 /*модальное окно загрузки 2 */
-	
+	 /* конец модальное окно загрузки 2 */
+	.form-group label.control-label {
+		line-height: 1.3em;
+	}
 	
 </style>
 
+@guest
 <section class="content outer">
 	<header class="navbar" id="top" role="banner">
 		<div class="container-fluid">
@@ -660,7 +663,7 @@
 					Менеджер Переводов
 				</a>
 			</div>
-			@if(isset($group))
+			@isset($group)
 				<div class="navbar-form navbar-right">
 					<a style="float: right;" href="{{ action('\Barryvdh\TranslationManager\Controller@getIndex') }}"
 						 class="btn btn-default">Назад</a>
@@ -671,7 +674,7 @@
 								action="{{ action('\Barryvdh\TranslationManager\Controller@postPublish', '*') }}"
 								data-remote="true"
 								role="form"
-								data-confirm="Вы уверены, что хотите опубликовать все переводы группы? Это действие перезапишет существующие языковые файлы.">
+								data-confirm="Вы уверены, что хотите опубликовать все переводы ключей этой группы? Это действие перезапишет существующие языковые файлы.">
 						{{ csrf_field() }}
 						<div class="navbar-form navbar-right">
 							<button type="submit" class="btn btn-default" data-disable-with="Publishing..">Экспортировать все
@@ -680,23 +683,28 @@
 						</div>
 					</form>
 				</fieldset>
-			@endif
+			@endisset
 		</div>
 	</header>
 			<div class="col-md-6 alert alert-success success-import inner" style="display:none;">
-				<p>Сделан импорт <strong class="counter">N</strong> лексем! Для обновления групп страница будет перезагруженна через 10 сек!</p>
+				<p>Сделан импорт <strong class="counter">N</strong> ключей.
+					Для обновления групп страница будет перезагруженна через
+					<strong class="seconds"></strong> сек.</p>
 			</div>
 			<div class="col-md-7 alert alert-success success-find inner" style="display:none;">
-				<p>Сделан поиск переводов, найдено <strong class="counter">N</strong> лексем! Для обновления групп страница будет перезагруженна через 10 сек!</p>
+				<p>Сделан поиск переводов, найдено <strong class="counter">N</strong> ключей.
+					Для обновления групп страница будет перезагруженна через
+					<strong class="seconds"></strong> сек.</p>
 			</div>
 			<div class="col-md-6 alert alert-success success-publish inner" style="display:none;">
-				<p>Совершены публикации переводов для группы '{{ $group }}'!</p>
+				<p>Совершены публикации переводов для группы '{{ $group }}'.</p>
 			</div>
 			<div class="col-md-6 alert alert-success success-publish-all inner" style="display:none;">
-				<p>Совершены публикации всех групп переводов!</p>
+				<p>Совершены публикации всех групп переводов.</p>
 			</div>
 	     <div class="col-md-6 alert alert-success success-clear inner" style="display:none;">
-				<p>Таблица лексем очищена.</p>
+				<p>Таблица переводов очищена. Для обновления групп страница будет перезагруженна через
+				 <strong class="seconds"></strong> сек.</p>
 			</div>
 			@if(Session::has('successPublish'))
 				<div class="col-md-6 alert alert-info inner">
@@ -718,15 +726,17 @@
 							</div>
 						</div>
 						<div class="box-body">
-								@if(!isset($group))
+								@empty($group)
 								<form class="form-clear" method="POST"
-											action="{{ action('\App\Http\Controllers\TranslationManagerController@clearTable') }}" data-remote="true"
+              {{--	action="{{ action('\App\Admin\Translations\TranslationManagerController@postReset') }}"--}}
+											action="{{ route('translations:reset') }}"
+											data-remote="true"
 											role="form"
-											data-confirm="Внимание! Вы уверены, что хотите очистить таблицу лексем?">
+											data-confirm="Внимание! Вы уверены, что хотите очистить таблицу переводов ключей?">
 									{{ csrf_field() }}
 									
 									<div class="form-group is-empty">
-										<label class="control-label">{{trans('translations.clearTable')}}</label>
+										<label class="control-label">{{trans('translations.reset')}}</label>
 											<div class="input-group">
 												<span class="input-group-addon">
 													<button type="submit" class="btn btn-danger navbar-form navbar-right"
@@ -744,7 +754,7 @@
 												data-remote="true" role="form">
 										{{ csrf_field() }}
 										<div class="form-group is-empty">
-											<label for="sample-value" class="control-label">Загрузка групп</label>
+											<label class="control-label">Загрузка групп</label>
 												<div class="input-group">
 													<span class="input-group-addon"><i class="fa fa-download"></i></span>
 													<select name="replace" class="form-control">
@@ -775,8 +785,8 @@
 												</div>
 										</div>
 									</form>
-								@endif
-								@if($group)
+								@endempty
+								@isset($group)
 										<div class="form-group is-empty">
 											<label class="control-label">{{trans('translations.edit_group')}}</label>
 											
@@ -834,10 +844,52 @@
 											в <code>extensions.multi-language.languages[]</code>
 											добавить новый язык. После этого он будет доступен для редактирования.
 										</p>
-								@endif
+								@endisset
 						</div>
 						<div class="box-footer"></div>
 					</div>
+					
+					<div class = "box box-solid collapsed-box ">
+						<div class="box-header with-border">
+							<h3 class="box-title">php artisan</h3>
+							<div class="box-tools pull-right">
+								<button class="btn btn-box-tool" data-widget="collapse"
+												data-toggle="tooltip" title="Свернуть">
+									<i class="fa fa-minus"></i>
+								</button>
+								<button class="btn btn-box-tool" data-widget="remove"
+												data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i>
+								</button>
+							</div>
+						</div>
+						<div class="box-body">
+							<div class="alert alert-secondary">
+								
+								<p><span class="label label-primary">php artisan translations:clean</span>
+								- поиск и исключение пустых ключей. ( примечение пустые ключи никогда не экспортируются )
+								</p>
+								<p><span class="label label-primary">php artisan translations:export {group}</span>
+								- команда экспорта запишет содержимое базы данных обратно в языковые файлы с перезаписью существующих переводов и удалением всех комментариев. Например: php artisan translations:export (en/nl)
+								</p>
+								<p><span class="label label-primary">php artisan translations:find</span>
+								- поиск и извлечение переводов из php/twig файлов с добавлением в базу данных.
+								</p>
+								<p><span class="label label-primary">php artisan translations:import</span>
+								- поиск в app/lang и загрузка в базу банных новых строк перевода.
+								</p><p>
+								<span class="label label-primary">php artisan translations:import --replace</span>
+								- поиск в app/lang строк перевода и загрузка их в базу банных с заменой существующих значений.
+								</p>
+								<p><span class="label label-primary">php artisan translations:reset</span>
+								- команда сброса базы данных, чтобы начать с пустой базы (с помощью нового импорта). Убедитесь в том, что вы экспортировали свою работу, если это необходимо, прежде чем очищать базу.
+								</p>
+								
+							</div>
+					   </div>
+						<div class="box-footer"></div>
+					</div>
+					
+					
 				</div>
 {{--				правая панель--}}
 				<div class="col-md-9">
@@ -849,7 +901,7 @@
 										action="{{ action('\Barryvdh\TranslationManager\Controller@postAddGroup') }}">
 								{{ csrf_field() }}
 								<div class="form-group   is-empty">
-									<label for="sample-value" class="col-sm-3 control-label">Выбрать группу</label>
+									<label class="col-sm-3 control-label">Выбрать группу</label>
 									<div class="col-sm-7">
 										<div class="input-group">
 											<span class="input-group-addon" style="padding-left: 18px;">
@@ -865,12 +917,12 @@
 									</div>
 								</div>
 								
-								@if(!isset($group))
+								@empty($group)
 									<p class="alert alert-secondary">Если ни одна из групп не видна, убедитесь, что вы
 										запустили миграцию и импортировали переводы на левой вкладке.</p>
 								
 									<div class="form-group   is-empty">
-										<label for="sample-value" class="col-sm-3  control-label">Новая группа переводов</label>
+										<label for="new-group" class="col-sm-3  control-label">Новая группа переводов</label>
 										<div class="col-sm-8">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="fa fa-pencil fa-fw"></i></span>
@@ -884,25 +936,25 @@
 										</div>
 									</div>
 									
-								@endif
+								@endempty
 							</form>
 							
-							@if($group)
+							@isset($group)
 								<div class="box-tools">
 									<span
-									 class="label label-success">Всего пунктов: {{ $numTranslations }} , изменено: {{ $numChanged }} </span>
+									 class="label label-success">Всего лексем: {{ $numTranslations }} , изменено: {{ $numChanged }} </span>
 								</div>
 								<form action="{{ action('\Barryvdh\TranslationManager\Controller@postAdd', array($group)) }}"
 											method="POST" role="form">
 									{{ csrf_field() }}
 									<div class="form-group is-empty">
-										<label for="sample-value" class="col-sm-3  control-label">Добавить новые ключи в этой группе</label>
+										<label for="new-keys" class="col-sm-3  control-label">Добавить новые ключи в группу
+											{{ $group }}</label>
 										<div class="col-sm-8">
 											<div class="input-group">
 												<span class="input-group-addon"><i class="fa fa-pencil-square-o"></i></span>
-												<textarea class="form-control" rows="3" name="keys"
-																	placeholder="Добавьте 1 ключ в каждой строке, без префикса группы">
-											</textarea>
+												<textarea id = "new-keys" class="form-control" rows="3" name="keys"
+												 placeholder="Добавьте 1 ключ в каждой строке, без префикса группы"></textarea>
 												<span class="input-group-addon">
 													<button type="submit" value="Добавить ключ" class="btn btn-default">
 												<i class="fa fa-plus"></i> Добавить</button>
@@ -911,7 +963,7 @@
 										</div>
 									</div>
 								</form>
-							@endif
+							@endisset
 						</div>
 						<div class="box-body table-responsive">
 							<table class="table table-hover">
@@ -947,7 +999,7 @@
 											<td>
 												<a href="{{ action('\Barryvdh\TranslationManager\Controller@postDelete', [$group, $key]) }}"
 													 class="delete-key"
-													 data-confirm="Вы уверены, что хотите удалить переводы '{{ htmlentities($key, ENT_QUOTES, 'UTF-8', false) }}?"><span
+													 data-confirm="Вы уверены, что хотите удалить переводы ключа '{{ htmlentities($key, ENT_QUOTES, 'UTF-8', false) }}?"><span
 													 class="glyphicon glyphicon-trash"></span></a>
 											</td>
 										@endif
@@ -957,23 +1009,24 @@
 							</table>
 						</div>
 						
-						@if(isset($group))
+						@isset($group)
 							<div class="box-header with-border">
-								<p class="alert alert-secondary">Внимание, переводы не видны, пока они не будут экспортированы обратно в
-									resources/lang файлы, с помощью команды <code>php artisan translation:export</code> или кнопки
-									опубликовать.
+								<p class="alert alert-secondary">Внимание, переводы не видны, пока они не будут
+									экспортированы обратно в <b>resources/lang/[files]</b>,
+									с помощью команды <code>php artisan translations:export</code> или кнопки опубликовать.
 								</p>
 								<form class="form-inline form-publish" method="POST"
 											action="{{ action('\Barryvdh\TranslationManager\Controller@postPublish', $group) }}"
 											data-remote="true" role="form"
-											data-confirm="Вы уверены, что хотите опубликовать группу переводов '{{ $group }}? Это перезапишет существующие языковые файлы.">
+											data-confirm="Вы уверены, что хотите опубликовать группу переводов ключей
+											 '{{ $group }}? Это перезапишет существующие языковые файлы.">
 									{{ csrf_field() }}
 									<button type="submit" class="btn btn-default" data-disable-with="Публикация..">Опубликовать</button>
 									<a style="float: right;" href="{{ action('\Barryvdh\TranslationManager\Controller@getIndex') }}"
 										 class="btn btn-default">Назад</a>
 								</form>
 							</div>
-						@endif
+						@endisset
 					
 					</div>
 				</div>
@@ -1010,3 +1063,4 @@
 	<div class="cssload-thing"></div>
 	<div class="cssload-thing"></div>
 </div>
+@endguest

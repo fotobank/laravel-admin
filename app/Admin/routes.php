@@ -58,8 +58,9 @@ Route::group($config, function(Router $router)
 });
 
 $config = config('translation-manager.route', []);
-$config['namespace'] = 'App\\Http\\Controllers';
+$config['namespace'] = 'App\\Admin\\Translations';
 Route::group($config, function(Router $router)
 {
-	$router->post('/clear-table', 'TranslationManagerController@clearTable');
+	$router->post('/reset', 'TranslationManagerController@postReset')
+		->name('translations:reset');
 });
