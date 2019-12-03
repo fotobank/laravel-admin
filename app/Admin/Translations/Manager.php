@@ -31,15 +31,15 @@ class Manager extends \Barryvdh\TranslationManager\Manager
 			"\(".                               // Match opening parenthesis
 			"[\'\"]".                           // Match " or '
 			'('.                                // Start a new group to match:
-			'[a-zA-Z0-9_-]+'.               // Must start with group
-			"([.](?! )[^\1)]+)+".             // Be followed by one or more items/keys
+			'[a-zA-Z0-9_-]+'.                   // Must start with group
+			"([.][^\{\$](?! )[^\1)]+)+".        // Be followed by one or more items/keys + add [^\{$]
 			')'.                                // Close group
 			"[\'\"]".                           // Closing quote
 			"[\),]";                            // Close parentheses or new parameter
 
 		$stringPattern =
 			"[^\w]".                                     // Must not have an alphanum before real method
-			'('.implode('|', $functions).')'.             // Must start with one of the functions
+			'('.implode('|', $functions).')'.         // Must start with one of the functions
 			"\(\s*".                                       // Match opening parenthesis
 			"(?P<quote>['\"])".                            // Match " or ' and store in {quote}
 			"(?P<string>(?:\\\k{quote}|(?!\k{quote}).)*)". // Match any string that can be {quote} escaped
@@ -56,6 +56,9 @@ class Manager extends \Barryvdh\TranslationManager\Manager
 			if (preg_match_all("/$groupPattern/siU", $file->getContents(), $matches)) {
 				// Get all matches
 				foreach ($matches[2] as $key) {
+					if($key == 'admin.submit') {
+						$t='';
+					}
 					$groupKeys[] = $key;
 				}
 			}
