@@ -35,7 +35,6 @@ class AddEmailFieldsToAdminUsersTable extends Migration
      */
     public function down()
     {
-	    Schema::dropIfExists(config('admin.database.users_table'));
 
 	    Schema::table(config('admin.database.users_table'), function (Blueprint $table) {
 		    $table->dropColumn([
