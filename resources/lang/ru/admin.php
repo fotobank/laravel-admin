@@ -137,4 +137,5 @@ return array (
     'front_users' => 'Клиенты',
     'filemanager' => 'Файловый менеджер',
   ),
+  'quick_create' => 'Быстрое создание',
 );

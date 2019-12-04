@@ -46,7 +46,7 @@
         });
         
         {{-- время показа сообщения в секундах --}}
-        var time = 10;
+        var time = 5;
 				{{-- таймер с перезагрузкой --}}
         function countDown() {
             $('.seconds').text(time);
@@ -79,6 +79,7 @@
         $('.form-publish').on('ajax:success', function (e, data) {
             $('div.success-publish').slideDown();
             setTimeout(function() { $('div.success-publish').slideUp();}, time * 1000);
+            countDown();
         });
 
         $('.form-publish-all').on('ajax:success', function (e, data) {

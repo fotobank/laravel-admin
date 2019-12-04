@@ -105,4 +105,6 @@ return array (
   'prev' => 'Prev',
   'next' => 'Next',
   'quick_create' => 'Quick create',
+  'id' => 'Id',
+  'update_error' => 'Update еrror!',
 );
