@@ -138,4 +138,5 @@ return array (
   'quick_create' => 'Швидко створити',
   'update_error' => 'Помилка оновлення!',
   'value' => 'Значення',
+  'member_since_admin' => 'Дата створення профілю',
 );

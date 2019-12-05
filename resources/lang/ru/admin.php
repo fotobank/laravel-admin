@@ -138,4 +138,5 @@ return array (
     'filemanager' => 'Файловый менеджер',
   ),
   'quick_create' => 'Быстрое создание',
+  'member_since_admin' => 'Дата создания профиля',
 );

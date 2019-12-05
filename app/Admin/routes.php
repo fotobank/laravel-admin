@@ -65,3 +65,5 @@ Route::group($config, function(Router $router)
 		->name('translations:reset');
 	$router->post('/find', 'Controller@postFind')->name('translations:find');
 });
+
+

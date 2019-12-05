@@ -41,7 +41,9 @@
 
                             <p>
                                 {{ Admin::user()->name }}
-                                <small>Member since admin {{ Admin::user()->created_at }}</small>
+                                <small>@lang('admin.member_since_admin')
+                                    {{ Admin::user()->created_at }}
+                                </small>
                             </p>
                         </li>
                         <li class="user-footer">
@@ -55,9 +57,9 @@
                     </ul>
                 </li>
                 <!-- Control Sidebar Toggle Button -->
-                {{--<li>--}}
-                    {{--<a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>--}}
-                {{--</li>--}}
+                {{--<li>
+                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                </li>--}}
             </ul>
         </div>
     </nav>

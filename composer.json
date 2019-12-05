@@ -48,6 +48,7 @@
         "laravel-admin-ext/daterangepicker": "^1.0",
         "laravel-admin-ext/file-browser": "^0.0.2",
         "laravel-admin-ext/grid-lightbox": "^1.0",
+        "laravel-admin-ext/grid-sortable": "^1.0",
         "laravel-admin-ext/helpers": "^1.1",
         "laravel-admin-ext/js-editor": "^1.0",
         "laravel-admin-ext/log-viewer": "^1.0",

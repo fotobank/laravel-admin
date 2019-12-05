@@ -107,4 +107,6 @@ return array (
   'quick_create' => 'Quick create',
   'id' => 'Id',
   'update_error' => 'Update еrror!',
+  'value' => 'Value',
+  'member_since_admin' => 'Member since admin',
 );

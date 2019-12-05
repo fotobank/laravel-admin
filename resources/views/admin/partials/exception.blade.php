@@ -1,3 +1,4 @@
+@isset($errors)
 @if($errors->hasBag('exception') && config('app.debug') == true)
     <?php $error = $errors->getBag('exception');?>
     <div class="alert alert-warning alert-dismissable">
@@ -12,3 +13,5 @@
         <p class="hidden" id="laravel-admin-exception-trace"><br>{!! nl2br($error->first('trace')) !!}</p>
     </div>
 @endif
+@endisset
+
