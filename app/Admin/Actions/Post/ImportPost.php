@@ -21,13 +21,13 @@ class ImportPost extends Action
 
     public function form()
     {
-        $this->file('file', '请选择文件');
+        $this->file('file', 'Пожалуйста, выберите файл');
     }
 
     public function html()
     {
         return <<<HTML
-        <a class="btn btn-sm btn-default import-post"><i class="fa fa-upload"></i>导入数据</a>
+        <a class="btn btn-sm btn-default import-post"><i class="fa fa-upload"></i>Импорт данных</a>
 HTML;
     }
 }

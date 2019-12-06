@@ -187,6 +187,8 @@ return [
         App\Providers\AuthServiceProvider::class,
 	    Cisco\Aliyunsms\AliyunsmsServiceProvider::class,
         Nutnet\LaravelSms\ServiceProvider::class,
+        // загрузка больших файлов
+        Recca0120\Upload\UploadServiceProvider::class,
 
     ],
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a774c8d3099c5b4aa381f2bdfdc140d0",
+    "content-hash": "eb1f74cc46314e548eb27868ec7de793",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -4830,6 +4830,68 @@
                 "uuid"
             ],
             "time": "2018-07-19T23:38:55+00:00"
+        },
+        {
+            "name": "recca0120/upload",
+            "version": "v1.7.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/recca0120/upload.git",
+                "reference": "0ec5878c04317765d5deb1e6036c9846a41e2c47"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/recca0120/upload/zipball/0ec5878c04317765d5deb1e6036c9846a41e2c47",
+                "reference": "0ec5878c04317765d5deb1e6036c9846a41e2c47",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/filesystem": "^5.1",
+                "illuminate/http": "^5.1",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "^1.6",
+                "mockery/mockery": "~0.9.4|~1.0",
+                "nesbot/carbon": "~1.20",
+                "phpunit/phpunit": "~4.8|~5.4|~6.1|~7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Recca0120\\Upload\\UploadServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Recca0120\\Upload\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "recca0120",
+                    "email": "recca0120@gmail.com"
+                }
+            ],
+            "description": "Ajax Upload Large File Support jQuery-File-Upload, FileApi, Plupload, Support framework Laravel 5",
+            "keywords": [
+                "ajax",
+                "chunk",
+                "dropzone",
+                "fileapi",
+                "jquery-file-upload",
+                "jquery-fileapi",
+                "laravel",
+                "plupload",
+                "upload"
+            ],
+            "time": "2018-09-25T05:45:23+00:00"
         },
         {
             "name": "scrivo/highlight.php",

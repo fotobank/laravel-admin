@@ -67,6 +67,7 @@
         "manzhouya/auth-attempts": "^1.2",
         "nesbot/carbon": "2.24.0 as 1.39.0",
         "nutnet/laravel-sms": "~0.4",
+        "recca0120/upload": "^1.7",
         "xiaohuilam/laravel-admin-select2-bootstrap-theme": "^0.0.2",
         "zelenin/smsru": "~4",
         "zhpefe/select-tree": "^1.2"

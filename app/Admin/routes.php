@@ -24,15 +24,6 @@ Route::group([
 	$router->post('auth/login', ['as' => 'auth.login.show', 'uses' => 'AuthController@postLogin']);
 
 
-// Compass Routes
-	Route::group([
-		'as'     => 'compass.',
-		'prefix' => 'compass',
-	], function () {
-		Route::get('/', ['uses' => 'CompassController@index',  'as' => 'index']);
-		Route::post('/', ['uses' => 'CompassController@index',  'as' => 'post']);
-	});
-
 });
 
 Route::resource('users', UserController::class);

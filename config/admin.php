@@ -518,8 +518,8 @@ return [
 		 * с этим не работает ajax
 		 */
 		'material-ui' => [
-//			'enable' => true,
-			'enable' => false,
+			'enable' => true,
+//			'enable' => false,
 		],
 		'data-table' => [
 
