@@ -421,8 +421,8 @@ return [
 		],
 		'grid-lightbox' => [
 
-			// Set to `false` if you want to disable this extension
 			'enable' => true,
+//			'enable' => false,
 		],
 		'admin-config' => [
 			'title'=>'AdminConfig',
@@ -432,6 +432,7 @@ return [
 		'ueditor' => [
 
 			'enable' => true,
+//			'enable' => false,
 			// Передний конец редактора эталонной конфигурации：http://fex.baidu.com/ueditor/#start-config
 			'config' => [
 				'initialFrameHeight' => 400, // Например, начальная высота
@@ -440,8 +441,9 @@ return [
 		],
 		'wang-editor' => [
 
-			// Если вы хотите, чтобы отключить это расширение устанавливается в ложь
+			// Если вы хотите, чтобы отключить это расширение устанавливается в false
 			'enable' => true,
+//			'enable' => false,
 
 			// Редактор конфигурации
 			'config' => [
@@ -452,6 +454,7 @@ return [
 		'json-editor' => [
 			// set to false if you want to disable this extension
 			'enable' => true,
+//			'enable' => false,
 			'config' =>
 				[
 					'mode' => 'tree',
@@ -461,6 +464,7 @@ return [
 		'simditor' => [
 			// Set to false if you want to disable this extension
 			'enable' => true,
+//			'enable' => false,
 			// Editor configuration
 			'config' => [
 				'upload' => [
@@ -480,11 +484,13 @@ return [
 		],
 		'tencent-map' => [
 			'enable' => true,
+//			'enable' => false,
 			'api_key' => env('TENCENT_MAP_API_KEY')
 		],
 		// защита от подбора пароля
 		'auth-attempts' => [
 			'enable' => true,
+//			'enable' => false,
 			// количество попыток
 			'maxAttempts'  => 5,
 			// кол-во минут блокировки
@@ -492,6 +498,7 @@ return [
 		],
 		'multi-language' => [
 			'enable' => true,
+//			'enable' => false,
 			// the key should be same as var locale in config/app.php
 			// the value is used to show
 			'languages' => [
@@ -505,13 +512,19 @@ return [
 		'echarts' => [
 			// Set to `false` if you want to disable this extension
 			'enable' => true,
+//			'enable' => false,
 		],
+		/**
+		 * с этим не работает ajax
+		 */
 		'material-ui' => [
-			'enable' => true,
+//			'enable' => true,
+			'enable' => false,
 		],
 		'data-table' => [
 
 			'enable' => true,
+//			'enable' => false,
 			// global options
 			'options' => [
 				'paging' => false,
@@ -526,6 +539,7 @@ return [
 
 			// set to false if you want to disable this extension
 			'enable' => true,
+//			'enable' => false,
 			// configuration
 			'config' => [
 				'min' => 1, 'max' => 5, 'step' => 1, 'size' => 'xs', 'language' => 'ru',
@@ -534,6 +548,7 @@ return [
 		// обрезка изображений
 		'cropper' => [
 			'enable' => true,
+//			'enable' => false,
 		],
 		'file-manager' => [
 			// Select a local disk that you configured in `config/filesystem.php`
@@ -541,25 +556,30 @@ return [
 		],
 		'composer-viewer' => [
 			'enable' => true,
+//			'enable' => false,
 		],
 		'env-manager' => [
 			'enable' => true
+//			'enable' => false,
 		],
 		'js-editor' => [
 			// Set to false if you want to disable this extension
 			'enable' => true,
+//			'enable' => false,
 			// Editor configuration
 			'config' => []
 		],
 		'php-editor' => [
 			//Set to false if you want to disable this extension
 			'enable' => true,
+//			'enable' => false,
 			// Editor configuration
 			'config' => []
 		],
 		'css-editor' => [
 
 			'enable' => true,
+//			'enable' => false,
 			// editor configuration
 			'config' => [
 			]
@@ -567,6 +587,7 @@ return [
 		'daterangepicker' => [
 
 			'enable' => true,
+//			'enable' => false,
 			// Find more configurations http://www.daterangepicker.com/
 			'config' => [
 			]
@@ -585,6 +606,7 @@ return [
 
 			// Set this to false if you want to disable this extension
 			'enable' => true,
+//			'enable' => false,
 
 			// What information to show，see http://php.net/manual/en/function.phpinfo.php#refsect1-function.phpinfo-parameters
 			'what' => INFO_ALL,
@@ -594,8 +616,8 @@ return [
 		],
 		'simplemde' => [
 
-			// Set to false if you want to disable this extension
 			'enable' => true,
+//			'enable' => false,
 
 			// If you want to set an alias for the calling method
 			//'alias' => 'markdown',
