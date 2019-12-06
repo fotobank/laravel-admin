@@ -55,6 +55,32 @@ Route::group($config, function(Router $router)
 	$router->post('/locales/remove', 'Controller@postRemoveLocale');
 	$router->post('/publish/{groupKey}', 'Controller@postPublish')->where('groupKey', '.*');
 	$router->post('/translate-missing', 'Controller@postTranslateMissing');
+
+
+	// Clear Cache
+	/*Route::get('/cache-clear', function () {
+
+		Artisan::call('cache:clear');
+	    Artisan::call('config:clear');
+	    Artisan::call('view:clear');
+	    Artisan::call('route:clear');
+
+
+		return redirect()->route('adminHome')->with('doneMessage', trans('backLang.cashClearDone'));
+	})->name('cacheClear');*/
+
+	/*Route::get('/artisan/{cmd}', function($cmd) {
+		$cmd = trim(str_replace("-",":", $cmd));
+		$validCommands = ['cache:clear', 'optimize', 'route:cache', 'route:clear', 'view:clear', 'config:cache'];
+		if (in_array($cmd, $validCommands)) {
+			Artisan::call($cmd);
+			return "<h1>Ran Artisan command: {$cmd}</h1>";
+		} else {
+			return "<h1>Not valid Artisan command</h1>";
+		}
+	});*/
+
+
 });
 
 $config = config('translation-manager.route', []);

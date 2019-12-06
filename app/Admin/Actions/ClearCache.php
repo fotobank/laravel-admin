@@ -2,6 +2,7 @@
 
 namespace App\Admin\Actions;
 
+use Artisan;
 use Encore\Admin\Actions\Action;
 use Illuminate\Http\Request;
 
@@ -11,6 +12,11 @@ class ClearCache extends Action
 
     public function handle(Request $request)
     {
+	    Artisan::call('cache:clear');
+	    Artisan::call('config:clear');
+	    Artisan::call('view:clear');
+	    Artisan::call('route:clear');
+
         return $this->response()->success('Кэш удален')->refresh();
     }
 
