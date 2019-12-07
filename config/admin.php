@@ -514,13 +514,6 @@ return [
 			'enable' => true,
 //			'enable' => false,
 		],
-		/**
-		 * с этим не работает ajax
-		 */
-		'material-ui' => [
-			'enable' => true,
-//			'enable' => false,
-		],
 		'data-table' => [
 
 			'enable' => true,
@@ -629,6 +622,34 @@ return [
 					'placeholder' => 'xxxx',
                  ]
 		],
+
+		/**
+		 * с ripples.min.js не работает ajax
+		 */
+		'material-ui' => [
+			'enable' => true,
+			// 'enable' => false,
+		],
+		'summernote' => [
+
+		'enable' => true,
+//		'enable' => false,
+		// Редактор конфигурации
+		'config' => [
+				'lang'   => 'ru-RU',
+				'hegiht' => 500,
+				]
+		],
+		'clike-editor' => [
+
+			'enable' => true,
+			// 'enable' => false,
+			'config' => [
+
+			]
+         ],
+
+
 
 	],
 ];

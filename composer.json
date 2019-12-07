@@ -23,6 +23,7 @@
         "encore/laravel-admin": "^1.7",
         "facade/ignition": "^1.11",
         "fideloper/proxy": "~3.3",
+        "fotobank/backup-migrations": "^0.1.0",
         "fotobank/laravel-admin-grid": "^1.4",
         "fotobank/laravel-admin-tagsinput": "^1.0",
         "fotobank/phpinfo": "^1.1",
@@ -41,6 +42,7 @@
         "kylekatarnls/laravel-carbon-2": "^1.0.0",
         "laravel-admin-ext/api-tester": "^1.0",
         "laravel-admin-ext/backup": "^1.0",
+        "laravel-admin-ext/clike-editor": "^1.0",
         "laravel-admin-ext/config": "^1.0",
         "laravel-admin-ext/cropper": "^1.0",
         "laravel-admin-ext/css-editor": "^1.0",
@@ -60,6 +62,7 @@
         "laravel-admin-ext/reporter": "^1.0",
         "laravel-admin-ext/scheduling": "^1.0",
         "laravel-admin-ext/simplemde": "^1.0",
+        "laravel-admin-ext/summernote": "^1.0",
         "laravel-admin-ext/wang-editor": "^1.1",
         "laravel-admin-extensions/multi-language": "^0.0.3",
         "laravel/framework": "5.5.*",
@@ -67,6 +70,7 @@
         "manzhouya/auth-attempts": "^1.2",
         "nesbot/carbon": "2.24.0 as 1.39.0",
         "nutnet/laravel-sms": "~0.4",
+        "paulvl/backup": "3.*",
         "recca0120/upload": "^1.7",
         "xiaohuilam/laravel-admin-select2-bootstrap-theme": "^0.0.2",
         "zelenin/smsru": "~4",
@@ -79,7 +83,8 @@
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "~1.0",
         "phpunit/phpunit": "~6.0",
-        "symfony/thanks": "^1.0"
+        "symfony/thanks": "^1.0",
+        "xethron/migrations-generator": "^2.0"
     },
     "autoload": {
         "classmap": [

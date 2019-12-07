@@ -57,8 +57,13 @@
     LA.token = "{{ csrf_token() }}";
 </script>
 
+
 <!-- REQUIRED JS SCRIPTS -->
 {!! Admin::js() !!}
+
+@stack('scripts')
+
+{{--<script src="{{ asset('vendor/laravel-admin-ext/material-ui/MaterialAdminLTE/dist/js/ripples.2.min.js') }}"></script>--}}
 
 </body>
 </html>

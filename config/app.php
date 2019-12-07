@@ -190,6 +190,11 @@ return [
         // загрузка больших файлов
         Recca0120\Upload\UploadServiceProvider::class,
 
+        // бэкап базы из командной строки
+        Backup\BackupServiceProvider::class,
+        // запуск бэкапа базы перед выполнением php artisan migrate или php artisan db:seed
+        Fotobank\BackupMigrations\BackupMigrationsServiceProvider::class,
+
     ],
 
     /*

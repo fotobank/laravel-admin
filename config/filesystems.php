@@ -48,6 +48,14 @@ return [
             'root' => storage_path('app'),
 
         ],
+
+        'backup' => [
+	        'driver' => 'local',
+	        'root' => storage_path('mysql_dump'),
+	        'url' => env('APP_URL').'/storage',
+	        'visibility' => 'public',
+        ],
+
         'admin' => [
 	        'driver'     => 'local',
 	        'root'       => public_path('upload'),
